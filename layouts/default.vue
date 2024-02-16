@@ -22,6 +22,9 @@ header {
   align-items: center;
   border-bottom: 1px solid black;
 }
+main {
+  padding: 20px 40px;
+}
 header div button:first-child {
   margin-right: 15px;
 }
