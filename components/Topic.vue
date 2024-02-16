@@ -23,9 +23,6 @@ const props = defineProps({
 </script>
 
 <style scoped>
-section {
-  scroll-margin-top: 80px;
-}
 section p {
   font-size: 20px;
 }

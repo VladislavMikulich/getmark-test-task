@@ -23,8 +23,6 @@ const linksData = sectionsData.map((section) => ({
 
 <style scoped>
 header {
-  position: sticky;
-  top: 0;
   padding: 20px 15px;
   background-color: bisque;
   display: flex;
