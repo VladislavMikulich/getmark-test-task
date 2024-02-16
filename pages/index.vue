@@ -1,16 +1,17 @@
 <template>
   <div class="sections-wrapper">
     <Topic
-      v-for="(section, index) in sectionsData"
-      :key="index"
+      v-for="section in sectionsData"
+      :key="section.id"
       :title="section.title"
       :content="section.content"
+      :sectionId="section.id"
     />
   </div>
 </template>
 
 <script setup>
-import { SECTIONS_DATA as sectionsData } from "../constants/"
+import { SECTIONS_DATA as sectionsData } from "../constants"
 </script>
 
 <style scoped>
