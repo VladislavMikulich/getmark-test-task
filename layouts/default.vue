@@ -4,9 +4,11 @@
     <div>
       <button>Section 1</button>
       <button>Section 2</button>
+      <Avatar />
     </div>
   </header>
   <main>
+    {{ user }}
     <slot />
   </main>
 </template>
@@ -25,8 +27,11 @@ header {
 main {
   padding: 20px 40px;
 }
-header div button:first-child {
-  margin-right: 15px;
+header div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 h1.header-title {
   margin: 0;
@@ -36,5 +41,6 @@ button {
   cursor: pointer;
   padding: 5px 20px;
   font-size: 15px;
+  max-height: 32px;
 }
 </style>
