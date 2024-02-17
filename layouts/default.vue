@@ -2,8 +2,9 @@
   <header>
     <h1 class="header-title">My amazing website</h1>
     <div>
-      <button>Section 1</button>
-      <button>Section 2</button>
+      <a v-for="link in linksData" :key="link.id" :href="`#${link.id}`">
+        {{ link.title }}
+      </a>
     </div>
   </header>
   <main>
@@ -11,7 +12,14 @@
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+import { SECTIONS_DATA as sectionsData } from "../constants"
+
+const linksData = sectionsData.map((section) => ({
+  id: section.id,
+  title: section.title,
+}))
+</script>
 
 <style scoped>
 header {
@@ -25,16 +33,24 @@ header {
 main {
   padding: 20px 40px;
 }
-header div button:first-child {
+header div a:first-child {
   margin-right: 15px;
 }
 h1.header-title {
   margin: 0;
   font-weight: 500;
 }
-button {
+a {
+  text-decoration: none;
   cursor: pointer;
   padding: 5px 20px;
   font-size: 15px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+a:hover {
+  background-color: rgb(233, 233, 233);
 }
 </style>

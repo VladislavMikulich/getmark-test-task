@@ -1,5 +1,6 @@
 export const SECTIONS_DATA = [
   {
+    id: 1,
     title: "Section 1",
     content: `Velit sunt voluptate occaecat in non ut ex ad reprehenderit elit laborum
       cupidatat duis exercitation. Labore adipisicing dolor cupidatat sunt ea sint
@@ -135,6 +136,7 @@ export const SECTIONS_DATA = [
       aute exercitation id anim. Veniam duis nulla nulla id dolore fugiat anim ipsum.`,
   },
   {
+    id: 2,
     title: "Section 2",
     content: `Pariatur ullamco nostrud dolore in cupidatat irure culpa officia officia amet
       do. Labore exercitation mollit commodo elit non cupidatat aliquip in ea laborum

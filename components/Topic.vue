@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section :id="sectionId">
     <h2>{{ props.title }}</h2>
     <p>{{ props.content }}</p>
   </section>
@@ -13,6 +13,10 @@ const props = defineProps({
   },
   content: {
     type: String,
+    required: true,
+  },
+  sectionId: {
+    type: Number,
     required: true,
   },
 })
