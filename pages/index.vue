@@ -2,9 +2,10 @@
   <div class="sections-wrapper">
     <Topic
       v-for="(section, index) in sections"
-      :key="index"
+      :key="section.id"
       :title="section.title"
       :content="section.content"
+      :sectionId="section.id"
     />
   </div>
 </template>
