@@ -1,4 +1,4 @@
-export const AVAILABLE_LANGUAGES = ["en", "ru"]
+export const AVAILABLE_LANGUAGES = ["en", "ru", "zh"]
 
 export const DEFAULT_LANGUAGE = "en"
 
