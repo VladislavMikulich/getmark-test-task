@@ -1,7 +1,7 @@
 <template>
   <div class="sections-wrapper">
     <Topic
-      v-for="(section, index) in sectionsData"
+      v-for="(section, index) in sections"
       :key="index"
       :title="section.title"
       :content="section.content"
@@ -10,7 +10,9 @@
 </template>
 
 <script setup>
-import { SECTIONS_DATA as sectionsData } from "../constants/"
+const { translation } = useTranslation()
+
+const sections = reactive([...translation("sections")])
 </script>
 
 <style scoped>
