@@ -1,10 +1,12 @@
 <template>
   <header>
-    <h1 class="header-title">My amazing website</h1>
+    <h1 class="header-title">{{ translation("headerTitle") }}</h1>
     <div>
-      <button>Section 1</button>
-      <button>Section 2</button>
+      <a v-for="link in linksData" :key="link.id" :href="`#${link.id}`">
+        {{ link.title }}
+      </a>
       <Avatar />
+      <LanguagesSelector />
     </div>
   </header>
   <main>
@@ -13,7 +15,14 @@
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+const { translation } = useTranslation()
+
+const linksData = translation("sections").map((section) => ({
+  id: section.id,
+  title: section.title,
+}))
+</script>
 
 <style scoped>
 header {
@@ -37,10 +46,17 @@ h1.header-title {
   margin: 0;
   font-weight: 500;
 }
-button {
+a {
+  text-decoration: none;
   cursor: pointer;
   padding: 5px 20px;
   font-size: 15px;
-  max-height: 32px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+a:hover {
+  background-color: rgb(233, 233, 233);
 }
 </style>
