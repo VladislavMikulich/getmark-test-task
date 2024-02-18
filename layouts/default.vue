@@ -10,7 +10,6 @@
     </div>
   </header>
   <main>
-    {{ user }}
     <slot />
   </main>
 </template>

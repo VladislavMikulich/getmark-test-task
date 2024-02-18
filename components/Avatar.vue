@@ -1,6 +1,10 @@
 <template>
-  <div @click="isShowAvatarImageStatusHandler">
-    <img v-if="isShowAvatarImageStatus" :src="user.avatar" alt="avatar" />
+  <div v-if="user" @click="isShowAvatarImageStatusHandler">
+    <img
+      v-if="isShowAvatarImageStatus && user?.avatar"
+      :src="user?.avatar"
+      alt="avatar"
+    />
     <p v-else>{{ initials }}</p>
   </div>
 </template>
@@ -11,8 +15,18 @@ import { fetchUserById } from "../services/user"
 const { data: user, error } = await useAsyncData("user", () => fetchUserById())
 
 const isShowAvatarImageStatus = ref(false)
+const initials = ref("")
 
-const initials = `${user.value.first_name[0]}${user.value.last_name[0]}`
+onMounted(() => {
+  if (error.value) {
+    alert(error.value)
+  } else {
+    initials.value =
+      user.value?.first_name && user.value?.last_name
+        ? `${user.value?.first_name?.[0]}${user.value?.last_name?.[0]}`
+        : "You"
+  }
+})
 
 const isShowAvatarImageStatusHandler = () => {
   isShowAvatarImageStatus.value = !isShowAvatarImageStatus.value
