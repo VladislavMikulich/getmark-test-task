@@ -5,6 +5,7 @@
       <a v-for="link in linksData" :key="link.id" :href="`#${link.id}`">
         {{ link.title }}
       </a>
+      <Avatar />
       <LanguagesSelector />
     </div>
   </header>
