@@ -1,6 +1,8 @@
 <template>
   <header>
-    <h1 class="header-title">{{ translation("headerTitle") }}</h1>
+    <h1 data-translation-path="headerTitle">
+      {{ translation("headerTitle") }}
+    </h1>
     <div>
       <a v-for="link in linksData" :key="link.id" :href="`#${link.id}`">
         {{ link.title }}
@@ -41,7 +43,7 @@ header div {
   align-items: center;
   gap: 15px;
 }
-h1.header-title {
+h1 {
   margin: 0;
   font-weight: 500;
 }

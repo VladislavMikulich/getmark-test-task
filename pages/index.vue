@@ -6,6 +6,7 @@
       :title="section.title"
       :content="section.content"
       :sectionId="section.id"
+      :index="index"
     />
   </div>
 </template>
