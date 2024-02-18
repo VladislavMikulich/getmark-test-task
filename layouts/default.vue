@@ -1,10 +1,11 @@
 <template>
   <header>
-    <h1 class="header-title">My amazing website</h1>
+    <h1 class="header-title">{{ translation("headerTitle") }}</h1>
     <div>
       <a v-for="link in linksData" :key="link.id" :href="`#${link.id}`">
         {{ link.title }}
       </a>
+      <LanguagesSelector />
     </div>
   </header>
   <main>
@@ -13,9 +14,9 @@
 </template>
 
 <script setup>
-import { SECTIONS_DATA as sectionsData } from "../constants"
+const { translation } = useTranslation()
 
-const linksData = sectionsData.map((section) => ({
+const linksData = translation("sections").map((section) => ({
   id: section.id,
   title: section.title,
 }))
@@ -33,8 +34,11 @@ header {
 main {
   padding: 20px 40px;
 }
-header div a:first-child {
-  margin-right: 15px;
+header div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 }
 h1.header-title {
   margin: 0;

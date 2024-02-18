@@ -4,6 +4,12 @@
   </NuxtLayout>
 </template>
 
+<script setup>
+const { loadTranslations } = useTranslation()
+
+loadTranslations()
+</script>
+
 <style>
 * {
   box-sizing: border-box;
