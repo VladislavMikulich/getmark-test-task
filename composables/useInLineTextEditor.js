@@ -1,8 +1,8 @@
-const state = reactive({
+const state = {
   elementToEdit: null,
   parentElement: null,
   editorArea: null,
-})
+}
 
 export function useInLineTextEditor() {
   onBeforeMount(() => {
@@ -51,7 +51,13 @@ export function useInLineTextEditor() {
     }
 
     if (event.key === "Enter") {
+      const lang = useCookie("language")
+      console.log("dfdsf", lang.value)
       const translations = useState("translations")
+
+      const customTranslations = JSON.parse(
+        localStorage.getItem("customTranslations")
+      )
 
       const updatedTranslation = state.editorArea.value
 
@@ -59,15 +65,26 @@ export function useInLineTextEditor() {
         .getAttribute("data-translation-path")
         .split(".")
 
-      translationKeys.reduce((acc, key, index) => {
+      let valueToTranslate = translations.value
+
+      translationKeys.forEach((key, index) => {
         if (index === translationKeys.length - 1) {
-          acc[key] = updatedTranslation
+          valueToTranslate[key] = updatedTranslation
         }
 
-        return acc[key] || {}
-      }, translations.value)
+        valueToTranslate = valueToTranslate[key] || {}
+      })
+
+      localStorage.setItem(
+        "customTranslations",
+        JSON.stringify({
+          ...customTranslations,
+          [lang.value]: translations.value,
+        })
+      )
 
       closeTextEditor()
+      location.reload()
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1 data-translation-path="headerTitle">
-      {{ translation("headerTitle") }}
+      {{ headerTitle }}
     </h1>
     <div>
       <a v-for="link in linksData" :key="link.id" :href="`#${link.id}`">
@@ -19,10 +19,19 @@
 <script setup>
 const { translation } = useTranslation()
 
-const linksData = translation("sections").map((section) => ({
-  id: section.id,
-  title: section.title,
-}))
+const headerTitle = ref("")
+const linksData = ref([])
+
+onMounted(() => {
+  linksData.value.push(
+    ...translation("sections").map((section) => ({
+      id: section.id,
+      title: section.title,
+    }))
+  )
+
+  headerTitle.value = translation("headerTitle")
+})
 </script>
 
 <style scoped>

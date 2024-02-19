@@ -14,7 +14,11 @@
 <script setup>
 const { translation } = useTranslation()
 
-const sections = reactive([...translation("sections")])
+const sections = ref([])
+
+onMounted(() => {
+  sections.value.push(...translation("sections"))
+})
 </script>
 
 <style scoped>
