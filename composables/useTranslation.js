@@ -24,19 +24,13 @@ export function useTranslation() {
 
   switch (lang.value) {
     case "ru":
-      translations.value = customTranslations
-        ? customTranslations?.value?.ru
-        : ru
+      translations.value = ru
       break
     case "zh":
-      translations.value = customTranslations
-        ? customTranslations?.value?.zh
-        : zh
+      translations.value = zh
       break
     default:
-      translations.value = customTranslations
-        ? customTranslations?.value?.en
-        : en
+      translations.value = en
       break
   }
 
