@@ -1,7 +1,11 @@
 <template>
   <section :id="sectionId">
-    <h2>{{ props.title }}</h2>
-    <p>{{ props.content }}</p>
+    <h2 :data-translation-path="`sections.${index}.title`">
+      {{ props.title }}
+    </h2>
+    <p :data-translation-path="`sections.${index}.content`">
+      {{ props.content }}
+    </p>
   </section>
 </template>
 
@@ -16,6 +20,10 @@ const props = defineProps({
     required: true,
   },
   sectionId: {
+    type: Number,
+    required: true,
+  },
+  index: {
     type: Number,
     required: true,
   },

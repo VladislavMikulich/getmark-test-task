@@ -5,9 +5,7 @@
 </template>
 
 <script setup>
-const { loadTranslations } = useTranslation()
-
-loadTranslations()
+useInLineTextEditor()
 </script>
 
 <style>

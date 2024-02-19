@@ -9,13 +9,14 @@
 <script setup>
 import { AVAILABLE_LANGUAGES as availableLanguages } from "../constants"
 
-const selectedLang = ref("")
-
 const language = useCookie("language")
+
+const selectedLang = ref("")
 
 selectedLang.value = language.value
 
 const updateLanguage = () => {
+  console.log(language.value, selectedLang.value)
   language.value = selectedLang.value
   location.reload()
 }

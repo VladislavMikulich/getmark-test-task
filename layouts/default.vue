@@ -1,6 +1,8 @@
 <template>
   <header>
-    <h1 class="header-title">{{ translation("headerTitle") }}</h1>
+    <h1 data-translation-path="headerTitle">
+      {{ headerTitle }}
+    </h1>
     <div>
       <a v-for="link in linksData" :key="link.id" :href="`#${link.id}`">
         {{ link.title }}
@@ -17,10 +19,19 @@
 <script setup>
 const { translation } = useTranslation()
 
-const linksData = translation("sections").map((section) => ({
-  id: section.id,
-  title: section.title,
-}))
+const headerTitle = ref("")
+const linksData = ref([])
+
+onMounted(() => {
+  linksData.value.push(
+    ...translation("sections").map((section) => ({
+      id: section.id,
+      title: section.title,
+    }))
+  )
+
+  headerTitle.value = translation("headerTitle")
+})
 </script>
 
 <style scoped>
@@ -41,7 +52,7 @@ header div {
   align-items: center;
   gap: 15px;
 }
-h1.header-title {
+h1 {
   margin: 0;
   font-weight: 500;
 }
