@@ -8,7 +8,7 @@
         {{ link.title }}
       </a>
       <Avatar />
-      <LanguagesSelector />
+      <LanguagesSelector v-if="isDisplaySelector" />
     </div>
   </header>
   <main>
@@ -21,6 +21,7 @@ const { translation } = useTranslation()
 
 const headerTitle = ref("")
 const linksData = ref([])
+const isDisplaySelector = ref(false)
 
 onMounted(() => {
   linksData.value.push(
@@ -31,6 +32,8 @@ onMounted(() => {
   )
 
   headerTitle.value = translation("headerTitle")
+
+  isDisplaySelector.value = true
 })
 </script>
 
